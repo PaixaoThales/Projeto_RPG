@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Coletavel
+  - Virtual Camera
+  - Trigger
+  - NPC
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - Bloqueio
+  - Consumiveis
+  - Inimigos
+  - Piso
+  - Objetos
+  - Municao
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Piso
+    uniqueID: 1586411761
+    locked: 0
+  - name: Objetos
+    uniqueID: 3728074265
+    locked: 0
+  - name: Lago
+    uniqueID: 463455107
+    locked: 0
+  - name: Caracteres
+    uniqueID: 3578645593
+    locked: 0
