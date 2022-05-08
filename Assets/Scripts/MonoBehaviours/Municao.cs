@@ -15,6 +15,7 @@ public class Municao : MonoBehaviour {
 			Inimigo inimigo = collision.gameObject.GetComponent<Inimigo>();
 			if (inimigo == null) return;
 			// Inicia a corrotina de dar dano no inimigo
+			if (!this.isActiveAndEnabled) return;
 			StartCoroutine(inimigo.DanoCaractere(danoCausado, 0.0f));
 			gameObject.SetActive(false);
 		}
