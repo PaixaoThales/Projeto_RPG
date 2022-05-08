@@ -26,7 +26,10 @@ public class Item : ScriptableObject {
 	// Dicionário para mapear o tipo de item com o som que ele toca quando pega
 	private Dictionary<TipoItem, string> tipoItemParaSomAoPegar = new Dictionary<TipoItem, string>()
 	{
-		{ TipoItem.MOEDA, "coin_pickup" }
+		{ TipoItem.MOEDA, "coin_pickup" },
+		{ TipoItem.RUBI, "coin_pickup" },
+		{ TipoItem.ESMERALDA, "coin_pickup" },
+		{ TipoItem.SAFIRA, "coin_pickup" }
 	};
 
 	/*
