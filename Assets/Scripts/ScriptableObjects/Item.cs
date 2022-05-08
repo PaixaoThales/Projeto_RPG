@@ -29,7 +29,8 @@ public class Item : ScriptableObject {
 		{ TipoItem.MOEDA, "coin_pickup" },
 		{ TipoItem.RUBI, "coin_pickup" },
 		{ TipoItem.ESMERALDA, "coin_pickup" },
-		{ TipoItem.SAFIRA, "coin_pickup" }
+		{ TipoItem.SAFIRA, "coin_pickup" },
+		{ TipoItem.HEALTH, "health_pickup" }
 	};
 
 	/*
