@@ -7,7 +7,7 @@ using UnityEngine;
 /// </summary>
 public class Player : Caractere {
 	public Inventario inventarioPrefab;   // Prefab criado do Inventario
-	Inventario inventario; // Inventario do player
+	public Inventario inventario; // Inventario do player
 	public HealthBar healthBarPrefab;     // Prefab criado da barra de vida
 	HealthBar healthBar; // Barra de vida do player
 
@@ -98,7 +98,8 @@ public class Player : Caractere {
 		// Se colidirmos com o npc verificamos se ja pegamos a arma para ver se precisamos avisar o player sobre o novo item
 		else if (collision.gameObject.CompareTag("NPC")) {
 			if (!novaArmaAdquirida) {
-				GameObject.Find("Aviso").GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -250);
+				GameObject.Find("Aviso").GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -150);
+
 				estaProximoDoNPC = true;
 			}
 		}
@@ -151,7 +152,7 @@ public class Player : Caractere {
 	/*
 		Método que faz o upgrade de arma do player e dobra a vida do player
 	*/
-	void FixedUpdate() {
+	void Update() {
 		if (Input.GetButtonDown("Jump") && estaProximoDoNPC) {
 			healthBar.multiplicador = 2;
 			GetComponent<Armas>().UpgradeArma();

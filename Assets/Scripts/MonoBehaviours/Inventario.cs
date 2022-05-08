@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 /// <summary>
 /// 
@@ -22,7 +23,16 @@ public class Inventario : MonoBehaviour {
 	}
 
 	/*
-		
+		Método que avalia se o inventario esta cheio
+	*/
+	public bool IsFull(){
+		foreach(var item in items){
+			if(item == null) return false;
+		}
+		return true;
+	}
+	
+	/*
 	*/
 	public void CriaSlots() {
 		if (slotPrefab != null) {

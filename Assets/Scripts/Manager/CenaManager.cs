@@ -76,7 +76,10 @@ public class CenaManager : MonoBehaviour
 	*/
     public void Finaliza(bool venceu)
     {
-        this.venceu = venceu;
+        if(player.GetComponent<Player>().inventario.IsFull()) 
+            this.venceu = true;
+        else this.venceu = false;
+
         Destroy(player);
         MudaCena("CenaFinal");
     }
