@@ -216,9 +216,8 @@ public class Armas : MonoBehaviour
 			// Constroi a trajetória em uma corrotina que recebe os pontos da trajetória
             StartCoroutine(arcoScript.arcoTrajetoria(posicaoMouse, duracaoTrajetoria));
             
-            AudioSource source = GameObject.Find("CenaManager").GetComponent<CenaManager>().sonsSource;
             var throwAudio = Resources.Load<AudioClip>("Sons/throw");
-            source.PlayOneShot(throwAudio);
+            GameObject.Find("CenaManager").GetComponent<CenaManager>().PlaySound(throwAudio);
         }
     }
 

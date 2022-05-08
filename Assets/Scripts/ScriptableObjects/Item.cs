@@ -42,8 +42,6 @@ public class Item : ScriptableObject {
 		if (!temSomAoPegar) return;
 
 		var som = Resources.Load<AudioClip>("Sons/" + somAoPegar);
-		
-		var audioSource = GameObject.Find("CenaManager").GetComponent<CenaManager>().sonsSource;
-		audioSource.PlayOneShot(som);
+		GameObject.Find("CenaManager").GetComponent<CenaManager>().PlaySound(som);
 	}
 }

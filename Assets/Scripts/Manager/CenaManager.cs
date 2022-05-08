@@ -64,6 +64,14 @@ public class CenaManager : MonoBehaviour
     }
 
     /*
+        Método que permite a reprodução de som por outros componentes na cena
+    */
+    public void PlaySound(AudioClip audioClip)
+    {
+        sonsSource.PlayOneShot(audioClip);
+    }
+
+    /*
 		Método que finaliza a gameplay passando para o menu final
 	*/
     public void Finaliza(bool venceu)
