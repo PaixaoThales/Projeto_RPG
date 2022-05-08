@@ -18,6 +18,8 @@ public class CenaManager : MonoBehaviour
     public AudioSource audioSource; // Representa a fonte de audio do game
     public AudioSource sonsSource; // Representa o canal por onde os sons saem
     public AudioClip musicaPadrao; // Representa a musica de introdução do game
+
+    public AudioClip musicaClimax; // Representa a musica de climax do game
     public AudioClip musicaFinal; // Representa a musica final do game
 
     /*
@@ -55,6 +57,18 @@ public class CenaManager : MonoBehaviour
             }
             // Se fase inicial carrega musica da fase inicial
             else if (faseAtual == 1)
+            {
+                audioSource.clip = musicaPadrao;
+                audioSource.loop = true;
+                audioSource.Play();
+            }
+            else if (faseAtual == 3)
+            {
+                audioSource.clip = musicaClimax;
+                audioSource.loop = true;
+                audioSource.Play();
+            }
+            else if (faseAtual == 4)
             {
                 audioSource.clip = musicaPadrao;
                 audioSource.loop = true;

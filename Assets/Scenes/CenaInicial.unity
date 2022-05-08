@@ -1227,7 +1227,8 @@ MonoBehaviour:
   audioSource: {fileID: 748724732}
   sonsSource: {fileID: 1153189539}
   musicaPadrao: {fileID: 8300000, guid: ba489e76b3e00d34da14e31f24b4aa6b, type: 3}
-  musicaFinal: {fileID: 8300000, guid: da5dc26d9c540bb468da4c77467da87a, type: 3}
+  musicaClimax: {fileID: 8300000, guid: e3c018b07598e7c47ac44745bcdaa8e1, type: 3}
+  musicaFinal: {fileID: 8300000, guid: 1426396569f9e4e49983d5e0337103ae, type: 3}
 --- !u!4 &1750683500
 Transform:
   m_ObjectHideFlags: 0
