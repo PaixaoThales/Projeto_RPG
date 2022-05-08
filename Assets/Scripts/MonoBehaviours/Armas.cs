@@ -215,6 +215,10 @@ public class Armas : MonoBehaviour
             float duracaoTrajetoria = 1.0f / velocidadeArma;
 			// Constroi a trajetória em uma corrotina que recebe os pontos da trajetória
             StartCoroutine(arcoScript.arcoTrajetoria(posicaoMouse, duracaoTrajetoria));
+            
+            AudioSource source = GameObject.Find("CenaManager").GetComponent<CenaManager>().sonsSource;
+            var throwAudio = Resources.Load<AudioClip>("Sons/throw");
+            source.PlayOneShot(throwAudio);
         }
     }
 
