@@ -5,6 +5,9 @@ using UnityEngine;
 [RequireComponent(typeof(CircleCollider2D))]
 [RequireComponent(typeof(Animator))]
 
+/// <summary>
+/// Classe que gerencia o movimento do caractere
+/// </summary>
 public class Perambular : MonoBehaviour {
 	public float velocidadePerseguicao;       // velocidade do "Inimigo" na área de Spot
 	public float velocidadePerambular;        // velocidade do "Inimigo" passeando
@@ -24,6 +27,7 @@ public class Perambular : MonoBehaviour {
 	float anguloAtual = 0;                    // Angulo atribuido
 
 	CircleCollider2D circleCollider;          // armazena o componente de Spot
+
 	// Start is called before the first frame update
 	void Start() {
 		animator = GetComponent<Animator>();
@@ -33,12 +37,9 @@ public class Perambular : MonoBehaviour {
 		circleCollider = GetComponent<CircleCollider2D>();
 	}
 
-	private void OnDrawGizmos() {
-		if (circleCollider != null) {
-			Gizmos.DrawWireSphere(transform.position, circleCollider.radius);
-		}
-	}
-
+	/*
+		Inicia a corrotina de movimento (perambular) para determinado inimigo
+	*/
 	public IEnumerator RotinaPerambular() {
 		while (true) {
 			EscolheNovoPontoFinal();
@@ -46,10 +47,14 @@ public class Perambular : MonoBehaviour {
 				StopCoroutine(MoverCoroutine);
 			}
 			MoverCoroutine = StartCoroutine(Mover(rb2D, velocidadeCorrente));
+			// A cada intervalo de tempo realiza o processo novamente
 			yield return new WaitForSeconds(intervaloMudancaDirecao);
 		}
 	}
 
+	/*
+		Método que move a sprite do inimigo na cena alem de gerenciar o estado da animacao
+	*/
 	public IEnumerator Mover(Rigidbody2D rbParaMover, float velocidade) {
 		float distanciaFaltante = (transform.position - posicaoFinal).sqrMagnitude;
 		while (distanciaFaltante > float.Epsilon) {
@@ -67,17 +72,27 @@ public class Perambular : MonoBehaviour {
 		animator.SetBool("Caminhando", false);
 	}
 
+	/*
+		Método faz o calculo da nova posicao
+	*/
 	void EscolheNovoPontoFinal() {
 		anguloAtual += Random.Range(0, 360);
 		anguloAtual = Mathf.Repeat(anguloAtual, 360);
 		posicaoFinal = transform.position + AnguloParaVector3(anguloAtual);
 	}
 
+	/*
+		Método faz o calculo para o vetor3
+	*/
 	Vector3 AnguloParaVector3(float anguloEntradaGraus) {
 		float anguloEntradaRadianos = anguloEntradaGraus * Mathf.Deg2Rad;
 		return new Vector3(Mathf.Cos(anguloEntradaRadianos), Mathf.Sin(anguloEntradaRadianos));
 	}
 
+	/*
+		Método que verifica colisão com o player para parar a corrotina de movimento
+		e em seguida continuar causando dano no player
+	*/
 	private void OnTriggerEnter2D(Collider2D collision) {
 		if (collision.gameObject.CompareTag("Player") && perseguePlayer) {
 			velocidadeCorrente = velocidadePerseguicao;
@@ -89,6 +104,10 @@ public class Perambular : MonoBehaviour {
 		}
 	}
 
+	/*
+		Método que verifica colisão com o player, quando ela não acontece paramos a corrotina
+		de movimento do inimigo
+	*/
 	private void OnTriggerExit2D(Collider2D collision) {
 		if (collision.gameObject.CompareTag("Player")) {
 			animator.SetBool("Caminhando", false);
@@ -102,6 +121,6 @@ public class Perambular : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update() {
-		Debug.DrawLine(rb2D.position, posicaoFinal, Color.red);
+
 	}
 }

@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Classe que gerencia o movimento do player na cena
+/// </summary>
 public class MovimentaPlayer : MonoBehaviour {
 	public float VelocidadeMovimento = 3.0f;      // equivale ao momento (impulso) a ser dado ao player
 	Vector2 Movimento = new Vector2();            // detectar movimento pelo teclado
@@ -20,10 +23,17 @@ public class MovimentaPlayer : MonoBehaviour {
 		UpdateEstado();
 	}
 
+	/*
+		Método que atualiza a posição do player na cena quando acionamos um comando
+	*/
 	private void FixedUpdate() {
 		MoveCaractere();
 	}
 
+	/*
+		Método que move a sprite adicionando o movimento a ela de acordo com os eixos 
+		em que os movimentos ocorreram
+	*/
 	private void MoveCaractere() {
 		Movimento.x = Input.GetAxisRaw("Horizontal");
     	Movimento.y = Input.GetAxisRaw("Vertical");
@@ -31,8 +41,10 @@ public class MovimentaPlayer : MonoBehaviour {
 		rb2D.velocity = Movimento * VelocidadeMovimento;
 	}
 
+	/*
+		Método que controla o estado do player (Caminhando)
+	*/
 	void UpdateEstado() {
-		Debug.Log($"X: {Movimento.x} Y: {Movimento.y}");
 		if (Mathf.Approximately(Movimento.x, 0) && Mathf.Approximately(Movimento.y, 0)) {
 			animator.SetBool("Caminhando", false);
 		}

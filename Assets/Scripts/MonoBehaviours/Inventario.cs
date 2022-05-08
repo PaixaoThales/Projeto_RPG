@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// 
+/// </summary>
 public class Inventario : MonoBehaviour {
 	public GameObject slotPrefab;                  // objeto que recebe o prefab Slot
 	public const int numSlots = 5;                 // numero fixo de Slots
@@ -18,6 +21,9 @@ public class Inventario : MonoBehaviour {
 
 	}
 
+	/*
+		
+	*/
 	public void CriaSlots() {
 		if (slotPrefab != null) {
 			for (int i = 0;i < numSlots;i++) {
@@ -30,8 +36,12 @@ public class Inventario : MonoBehaviour {
 		}
 	}
 
+	/*
+		Método que adiciona um item ao inventario player
+	*/
 	public bool AddItem(Item itemToAdd) {
 		for (int i = 0;i < items.Length;i++) {
+			// Se tiver o item, o tipo do item for o tipo que queremos adicionar e ele for empilhavel
 			if (items[i] != null && items[i].tipoItem == itemToAdd.tipoItem && itemToAdd.empilhavel) {
 				items[i].quantidade++;
 				Slot slotScript = slots[i].gameObject.GetComponent<Slot>();
@@ -40,6 +50,7 @@ public class Inventario : MonoBehaviour {
 				quantidadeTexto.text = items[i].quantidade.ToString();
 				return true;
 			}
+			// Se o espaço for nulo adicionamos o item nele
 			if (items[i] == null) {
 				items[i] = Instantiate(itemToAdd);
 				items[i].quantidade = 1;
