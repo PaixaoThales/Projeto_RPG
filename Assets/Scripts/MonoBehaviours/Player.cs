@@ -36,6 +36,11 @@ public class Player : Caractere {
 			// Inicia a corrotina de flicker do player (mudança de cor vermelho-branco da sprite)
 			StartCoroutine(FlickerCaractere());
 			pontosDano.valor -= dano;
+
+			// Toca o som do ataque do inimigo
+			var somAtaqueInimigo = Resources.Load<AudioClip>("Sons/ataque_inimigo");
+			GameObject.Find("CenaManager").GetComponent<CenaManager>().PlaySound(somAtaqueInimigo);
+
 			// Mata o player destruindo a sprite de da cena
 			if (pontosDano.valor <= float.Epsilon) {
 				KillCaractere();
