@@ -16,6 +16,7 @@ public class CenaManager : MonoBehaviour
     public int faseAtual; // Inteiro que indica a fase atual do game
 
     public AudioSource audioSource; // Representa a fonte de audio do game
+    public AudioSource sonsSource; // Representa o canal por onde os sons saem
     public AudioClip musicaPadrao; // Representa a musica de introdução do game
     public AudioClip musicaFinal; // Representa a musica final do game
 
