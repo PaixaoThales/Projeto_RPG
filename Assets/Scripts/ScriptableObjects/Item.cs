@@ -22,4 +22,24 @@ public class Item : ScriptableObject {
 	}
 
 	public TipoItem tipoItem;
+
+	// Dicionário para mapear o tipo de item com o som que ele toca quando pega
+	private Dictionary<TipoItem, string> tipoItemParaSomAoPegar = new Dictionary<TipoItem, string>()
+	{
+		{ TipoItem.MOEDA, "coin_pickup"}
+	};
+
+	/*
+		Método chamado quando o player pega um item
+	*/
+	public void AoPegar()
+	{
+		bool temSomAoPegar = tipoItemParaSomAoPegar.TryGetValue(this.tipoItem, out string somAoPegar);
+		if (!temSomAoPegar) return;
+
+		var som = Resources.Load<AudioClip>("Sons/" + somAoPegar);
+		
+		var audioSource = GameObject.Find("CenaManager").GetComponent<CenaManager>().sonsSource;
+		audioSource.PlayOneShot(som);
+	}
 }

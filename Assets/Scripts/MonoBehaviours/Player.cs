@@ -125,6 +125,7 @@ public class Player : Caractere {
 						break;
 				}
 				if (DeveDesaparecer) {
+					DanoObjeto.AoPegar();
 					collision.gameObject.SetActive(false);
 				}
 			}
